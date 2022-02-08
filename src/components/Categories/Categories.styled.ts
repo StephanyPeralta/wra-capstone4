@@ -7,6 +7,7 @@ const CategoriesWrapper = styled.div`
   }
   @media (max-width: 576px) {
     padding: 120px 20px;
+    text-align: center;
   }
 `;
 

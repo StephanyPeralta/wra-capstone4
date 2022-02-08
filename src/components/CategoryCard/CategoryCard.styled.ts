@@ -42,6 +42,11 @@ const Button = styled.button`
   color: #436761;
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: #faa897;
+    transform: scale(1.1);
+  }
 `;
 
 export { CategoryWrapper, Image, Info, Title, Button };

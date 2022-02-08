@@ -14,7 +14,7 @@ function ProductCard({ name, price, img }: Product) {
         </div>
       </div>
       <div className="card-flex">
-        <button className="card-button" type="button">
+        <button className="card-button" type="button" title="Add to cart">
           <AiOutlineShoppingCart size={20} />
         </button>
         <p className="card-price">${price}</p>

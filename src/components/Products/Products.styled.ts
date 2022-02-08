@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const ProductsWrapper = styled.div`
-  background-color: #e7e9e8;
+  background-color: #f6f1ed;
   padding: 90px 60px;
   @media (max-width: 768px) {
     padding: 90px 40px;
   }
   @media (max-width: 576px) {
     padding: 90px 20px;
+    text-align: center;
   }
 `;
 
@@ -21,9 +22,12 @@ const Title = styled.h1`
 `;
 
 const ProductsList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  @media (max-width: 440px) {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
 `;
 
 export { ProductsWrapper, Title, ProductsList };

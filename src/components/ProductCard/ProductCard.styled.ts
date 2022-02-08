@@ -7,10 +7,10 @@ const ProductCardWrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 250px;
-  //   height: 360px;
-  margin: 15px;
-  padding: 20px;
+  justify-content: space-between;
+  min-height: 350px;
+  margin: 10px;
+  padding: 10px 15px 20px;
   transition: all 0.3s ease-in-out;
 
   .card-link {
@@ -21,10 +21,11 @@ const ProductCardWrapper = styled.div`
     display: block;
     margin: 0 auto;
     max-width: 100%;
-    max-height: 30vh;
+    height: 220px;
   }
   .card-content {
     padding: 5px 0 0;
+    text-align: left;
   }
   .card-title {
     font-size: 16px;
@@ -36,7 +37,7 @@ const ProductCardWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 15px 0 0;
+    margin: 10px 0 0;
   }
   .card-price {
     margin: 0 0 0 10px;
@@ -59,6 +60,9 @@ const ProductCardWrapper = styled.div`
     &:hover {
       background: #f3bdb3;
     }
+  }
+  @media (max-width: 440px) {
+    margin: 10px 0;
   }
 `;
 

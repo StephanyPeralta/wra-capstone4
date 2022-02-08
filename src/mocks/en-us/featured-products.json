@@ -979,10 +979,7 @@
       "tags": ["Living Room", "Sofa"],
       "first_publication_date": "2021-10-10T01:59:13+0000",
       "last_publication_date": "2021-10-10T02:31:47+0000",
-      "slugs": [
-        "chesterfield-sofa-dark-brown",
-        "sofa-chesterfield-cafe-obscuro"
-      ],
+      "slugs": ["chesterfield-sofa-dark-brown", "sofa-chesterfield-cafe-obscuro"],
       "linked_documents": [],
       "lang": "en-us",
       "alternate_languages": [
@@ -1122,10 +1119,7 @@
       "tags": ["Living Room", "Armchair"],
       "first_publication_date": "2021-10-10T14:55:54+0000",
       "last_publication_date": "2021-10-10T14:55:54+0000",
-      "slugs": [
-        "brown-turner-right-arm-armchair",
-        "sillon-brazo-derecho-cafe-turner"
-      ],
+      "slugs": ["brown-turner-right-arm-armchair", "sillon-brazo-derecho-cafe-turner"],
       "linked_documents": [],
       "lang": "en-us",
       "alternate_languages": [
@@ -1716,10 +1710,7 @@
       "tags": ["Living Room", "Sofa"],
       "first_publication_date": "2021-10-10T15:19:27+0000",
       "last_publication_date": "2021-10-10T15:19:27+0000",
-      "slugs": [
-        "pearce-modular-sofa-left-arm",
-        "sofa-modular-pearce-brazo-izquierdo"
-      ],
+      "slugs": ["pearce-modular-sofa-left-arm", "sofa-modular-pearce-brazo-izquierdo"],
       "linked_documents": [],
       "lang": "en-us",
       "alternate_languages": [
@@ -2192,10 +2183,7 @@
       "tags": ["Bedroom", "Bed"],
       "first_publication_date": "2021-10-09T23:17:27+0000",
       "last_publication_date": "2021-10-10T02:24:47+0000",
-      "slugs": [
-        "chesterfield-king-size-bed-gray",
-        "cama-chesterfield-king-size-gris"
-      ],
+      "slugs": ["chesterfield-king-size-bed-gray", "cama-chesterfield-king-size-gris"],
       "linked_documents": [],
       "lang": "en-us",
       "alternate_languages": [
@@ -3081,11 +3069,7 @@
       "tags": ["Bedroom", "Drawers"],
       "first_publication_date": "2021-10-10T01:00:50+0000",
       "last_publication_date": "2021-10-10T02:27:06+0000",
-      "slugs": [
-        "oakleigh-chest-of-drawers",
-        "oakleigh-drawer",
-        "comoda-oakleigh"
-      ],
+      "slugs": ["oakleigh-chest-of-drawers", "oakleigh-drawer", "comoda-oakleigh"],
       "linked_documents": [],
       "lang": "en-us",
       "alternate_languages": [
