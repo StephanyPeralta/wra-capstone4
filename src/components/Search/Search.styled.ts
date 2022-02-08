@@ -1,19 +1,22 @@
 import styled from 'styled-components';
 
 const SearchContainer = styled.div`
-  position: relative;
+  align-items: center;
   border-radius: 6px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  margin: 0 1rem;
   max-width: 250px;
   padding: 0.1rem;
-  margin: 0 1rem;
+  position: relative;
+  @media (max-width: 576px) {
+    margin: 0 10px;
+  }
 `;
 
 const SearchInput = styled.input`
-  color: #000;
-  border-radius: 15px;
+  color: #082022;
+  border-radius: 6px;
   height: 40px;
   width: 100%;
   padding: 0.4rem 2.3rem 0.4rem 0.8rem;
@@ -39,7 +42,7 @@ const SearchIconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: #082022;
   padding: 0 0.6rem;
   &:focus {
     border: none;
