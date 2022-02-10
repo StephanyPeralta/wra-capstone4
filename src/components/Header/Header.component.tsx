@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 import Search from '../Search';
-import { HeaderWrapper, LogoTitle, HeaderSection } from './Header.styled';
+import { HeaderWrapper, LogoTitle, HeaderSection, CartButton } from './Header.styled';
 
 function Header() {
   return (
@@ -15,9 +15,9 @@ function Header() {
       </HeaderSection>
       <HeaderSection>
         <Search />
-        <div className="cart-button">
-          <AiOutlineShoppingCart size={27} />
-        </div>
+        <CartButton className="cart-button" type="button" title="shopping cart">
+          <AiOutlineShoppingCart size={22} />
+        </CartButton>
       </HeaderSection>
     </HeaderWrapper>
   );
