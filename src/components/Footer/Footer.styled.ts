@@ -44,6 +44,7 @@ const FooterIcon = styled.a`
   background-color: #faa897;
   border: none;
   border-radius: 6px;
+  color: #082022;
   display: flex;
   align-items: center;
   justify-content: center;

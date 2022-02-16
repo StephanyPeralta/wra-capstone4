@@ -1,40 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import ProductCard from '../ProductCard';
-import featuredProducts from '../../mocks/en-us/featured-products.json';
+import Pagination from '../../components/Pagination';
 import { Product } from '../../utils/types';
-import { ProductsWrapper, Title, ProductsList } from './Products.styled';
+import {
+  ProductsWrapperH,
+  ProductsWrapperPL,
+  Title,
+  ProductsGrid,
+} from './Products.styled';
 
-function Products() {
-  const [products, setProducts] = useState<Product[]>([]);
+interface ProductsProps {
+  title: string;
+  products: Product[];
+}
 
-  useEffect(() => {
-    const data = featuredProducts.results;
-
-    const getProducts = data.map((item) => {
-      const id = item.id;
-      const name = item.data.name;
-      const price = item.data.price;
-      const img = item.data.mainimage.url;
-      return {
-        id,
-        name,
-        price,
-        img,
-      };
-    });
-    setProducts(getProducts);
-  }, []);
+function Products({ title, products }: ProductsProps) {
+  const ProductsWrapperMain =
+    title === 'Featured Products' ? ProductsWrapperH : ProductsWrapperPL;
 
   return (
-    <ProductsWrapper>
-      <Title>Featured Products</Title>
-      <ProductsList>
-        {products.map((item) => (
-          <ProductCard key={item.id} {...item} />
+    <ProductsWrapperMain>
+      <Title>{title}</Title>
+      <ProductsGrid>
+        {products.map((product) => (
+          <ProductCard key={product.id} {...product} />
         ))}
-      </ProductsList>
-    </ProductsWrapper>
+      </ProductsGrid>
+      {title === 'Products' && <Pagination />}
+    </ProductsWrapperMain>
   );
 }
 

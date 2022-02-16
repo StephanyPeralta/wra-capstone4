@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SliderWrapper = styled.div`
+const SliderWrapper = styled.main`
   width: 100%;
   height: calc(100vh - 100px);
   position: relative;

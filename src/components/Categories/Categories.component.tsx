@@ -28,8 +28,13 @@ function Categories() {
     <CategoriesWrapper>
       <Title>Categories</Title>
       <CategoriesList>
-        {categories.map((item) => (
-          <CategoryCard key={item.id} id={item.id} img={item.img} title={item.title} />
+        {categories.map((category) => (
+          <CategoryCard
+            key={category.id}
+            id={category.id}
+            img={category.img}
+            title={category.title}
+          />
         ))}
       </CategoriesList>
     </CategoriesWrapper>

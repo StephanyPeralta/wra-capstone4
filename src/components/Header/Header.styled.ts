@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const HeaderWrapper = styled.header`
   align-items: center;
   background-color: #fff;
+  border-bottom: 1px solid #dddddd;
   display: flex;
   justify-content: space-between;
   padding: 20px 60px;
@@ -55,6 +56,7 @@ const CartButton = styled.button`
   background-color: #faa897;
   border: none;
   border-radius: 6px;
+  color: #082022;
   cursor: pointer;
   display: flex;
   align-items: center;

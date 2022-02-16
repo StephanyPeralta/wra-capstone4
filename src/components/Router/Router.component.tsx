@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Layout from '../Layout';
 import HomePage from '../../pages/Home';
+import ProductListPage from '../../pages/ProductList';
 import NotFound from '../../pages/NotFound';
 
 function Router() {
@@ -11,6 +12,9 @@ function Router() {
       <Switch>
         <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route exact path="/products">
+          <ProductListPage />
         </Route>
         <Route path="*">
           <NotFound />

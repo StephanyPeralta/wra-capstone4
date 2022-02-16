@@ -12,7 +12,7 @@ function Layout({ children }: Props) {
   return (
     <LayoutWrapper>
       <Header />
-      <div>{children}</div>
+      <div className="layout-container">{children}</div>
       <Footer />
     </LayoutWrapper>
   );
