@@ -13,7 +13,12 @@ export interface Category {
 
 export interface Product {
   id?: string;
+  img: string;
   name: string;
   price: number;
-  img: string;
+  category: string;
+}
+
+export interface ProductsState {
+  activeCategories: string[];
 }

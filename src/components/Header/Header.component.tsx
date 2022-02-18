@@ -9,7 +9,9 @@ function Header() {
     <HeaderWrapper data-testid="header">
       <HeaderSection>
         <LogoTitle to="/">
-          <span className="brand-name hidden-mobile">WIZE Designs</span>
+          <span className="brand-name hidden-mobile" title="WizeD logo">
+            WIZE Designs
+          </span>
           <span className="brand-name-mobile">WD</span>
         </LogoTitle>
       </HeaderSection>

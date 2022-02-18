@@ -8,7 +8,7 @@ const ProductCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 350px;
+  min-height: 380px;
   margin: 10px;
   padding: 10px 15px 20px;
   transition: all 0.3s ease-in-out;
@@ -24,11 +24,17 @@ const ProductCardWrapper = styled.div`
     height: 220px;
   }
   .card-content {
-    padding: 5px 0 0;
+    padding: 8px 0 0;
     text-align: left;
   }
   .card-title {
     font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    margin: 0 0 5px;
+  }
+  .card-text {
+    font-size: 14px;
     font-weight: 300;
     line-height: 22px;
     margin: 0;
@@ -37,7 +43,7 @@ const ProductCardWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0 0;
+    margin: 17px 0 0;
   }
   .card-price {
     margin: 0 0 0 10px;
