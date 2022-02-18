@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useCallback } from 'react';
 
 import productsReducer, { PRODUCTS_ACTIONS } from './productsReducer';
 import { ProductsState } from '../../utils/types';
@@ -34,9 +34,9 @@ function useProducts() {
 function ProductsProvider({ children }: ProductsProviderProps) {
   const [state, dispatch] = useReducer(productsReducer, initialState);
 
-  const addCategory = (category: string) => {
+  const addCategory = useCallback((category: string) => {
     dispatch({ type: PRODUCTS_ACTIONS.ADD_ACTIVE_CATEGORY, payload: { category } });
-  };
+  }, []);
 
   const removeCategory = (category: string) => {
     dispatch({ type: PRODUCTS_ACTIONS.REMOVE_ACTIVE_CATEGORY, payload: { category } });
