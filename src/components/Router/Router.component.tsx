@@ -10,7 +10,7 @@ function Router() {
   return (
     <Layout>
       <Switch>
-        <Route exact path="/">
+        <Route exact path={["/", "/home"]}>
           <HomePage />
         </Route>
         <Route exact path="/products">

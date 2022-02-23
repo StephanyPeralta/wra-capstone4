@@ -1,76 +1,34 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
-import { useProducts } from '../../providers/Products';
+import { useProductsContext } from '../../providers/Products';
+import { useProducts } from '../../utils/hooks/useProducts';
+import { useCategories } from '../../utils/hooks/useCategories';
 import SideMenu from '../../components/SideMenu';
 import Products from '../../components/Products';
-import productCategories from '../../mocks/en-us/product-categories.json';
-import productList from '../../mocks/en-us/products.json';
-import { ProductListWrapper, LoaderContainer, Loader } from './ProductList.styled';
+import Loader from '../../components/Loader';
+import { ProductListWrapper } from './ProductList.styled';
 
 function ProductListPage() {
-  const { activeCategories } = useProducts();
-  const [isLoading, setIsLoading] = useState(true);
-
-  const memoCategories = useMemo(() => {
-    const data = productCategories.results;
-
-    const categories = data.map((item) => {
-      const id = item.id;
-      const title = item.data.name;
-      const img = item.data.main_image.url;
-      return {
-        id,
-        title,
-        img,
-      };
-    });
-
-    return categories;
-  }, []);
+  const { activeCategories } = useProductsContext();
+  const { data: categories } = useCategories();
+  const { data: products, isLoading } = useProducts();
 
   const memoProducts = useMemo(() => {
-    const data = productList.results;
+    const productsData = products.filter((item) => {
+      if (activeCategories.length > 0) {
+        return activeCategories.includes(item.category.toLowerCase());
+      }
+      return true;
+    });
 
-    const products = data
-      .map((item) => {
-        const id = item.id;
-        const img = item.data.mainimage.url;
-        const name = item.data.name;
-        const price = item.data.price;
-        const category = item.data.category.slug;
-        return {
-          id,
-          img,
-          name,
-          price,
-          category,
-        };
-      })
-      .filter((item) => {
-        if (activeCategories.length > 0) {
-          return activeCategories.includes(item.category.toLowerCase());
-        }
-        return true;
-      });
-
-    return products;
-  }, [activeCategories]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
+    return productsData;
+  }, [activeCategories, products]);
 
   return (
     <ProductListWrapper>
-      <SideMenu categories={memoCategories} />
+      <SideMenu categories={categories} />
       <div className="products-container">
-        {isLoading && (
-          <LoaderContainer data-testid="loader-icon2">
-            <Loader size={60} />
-          </LoaderContainer>
-        )}
+        {isLoading && <Loader />}
         {!isLoading && <Products title="Products" products={memoProducts} />}
       </div>
     </ProductListWrapper>

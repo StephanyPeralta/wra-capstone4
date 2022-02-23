@@ -1,5 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-import { FaSpinner } from 'react-icons/fa';
+import styled from 'styled-components';
 
 const ProductListWrapper = styled.div`
   display: flex;
@@ -13,25 +12,4 @@ const ProductListWrapper = styled.div`
   }
 `;
 
-const LoaderContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 15px;
-  margin: 90px auto;
-`;
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-const Loader = styled(FaSpinner)`
-  animation: ${rotate} 1s linear infinite;
-`;
-
-export { ProductListWrapper, LoaderContainer, Loader };
+export { ProductListWrapper };

@@ -23,10 +23,10 @@ const ProductsContext = createContext<IProductsContext>({
   removeCategory: (category: string) => [],
 });
 
-function useProducts() {
+function useProductsContext() {
   const context = useContext(ProductsContext);
   if (!context) {
-    throw new Error(`Can't use "useProducts" without a "ProductsProvider"`);
+    throw new Error(`Can't use "useProductsContext" without a "ProductsProvider"`);
   }
   return context;
 }
@@ -51,5 +51,5 @@ function ProductsProvider({ children }: ProductsProviderProps) {
   return <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>;
 }
 
-export { useProducts };
+export { useProductsContext };
 export default ProductsProvider;

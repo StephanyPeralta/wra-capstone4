@@ -34,10 +34,12 @@ const ProductCardWrapper = styled.div`
     margin: 0 0 5px;
   }
   .card-text {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
+    letter-spacing: 2px;
     line-height: 22px;
     margin: 0;
+    text-transform: uppercase;
   }
   .card-flex {
     display: flex;
