@@ -11,7 +11,7 @@ import Loader from '../Loader';
 import { SliderWrapper, SliderTextBox } from './Slider.styled';
 
 function Slider() {
-  const { isLoading, data } = useFeaturedBanners();
+  const { isLoading, data: banners } = useFeaturedBanners();
 
   if (isLoading) {
     return <Loader />;
@@ -34,7 +34,7 @@ function Slider() {
         className="mySwiper"
         virtual
       >
-        {data.map((banner) => (
+        {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             <img src={banner.img} alt={banner.title} />
             <SliderTextBox>

@@ -2,16 +2,21 @@ import React from 'react';
 
 import CategoryCard from '../CategoryCard';
 import { useCategories } from '../../utils/hooks/useCategories';
+import Loader from '../Loader';
 import { CategoriesWrapper, Title, CategoriesList } from './Categories.styled';
 
 function Categories() {
-  const { data } = useCategories();
+  const { categories, isLoading } = useCategories();
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <CategoriesWrapper>
       <Title>Categories</Title>
       <CategoriesList>
-        {data.map((category) => (
+        {categories.map((category) => (
           <CategoryCard
             key={category.id}
             id={category.id}

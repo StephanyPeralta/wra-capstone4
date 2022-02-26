@@ -6,19 +6,25 @@ import Slider from '../../components/Slider';
 import Categories from '../../components/Categories';
 import Products from '../../components/Products';
 import { HomeWrapper, Button } from './Home.styled';
+import Loader from '../../components/Loader';
 
 function HomePage() {
-  const { data } = useFeatProducts();
+  const { data, isLoading } = useFeatProducts();
   const { push } = useHistory();
 
   return (
     <HomeWrapper>
       <Slider />
       <Categories />
-      <Products title="Featured Products" products={data} />
-      <div className="button-wrapper">
-        <Button onClick={() => push('/products')}>View all products</Button>
-      </div>
+      {isLoading && <Loader />}
+      {!isLoading && (
+        <>
+          <Products title="Featured Products" products={data} />
+          <div className="button-wrapper">
+            <Button onClick={() => push('/products')}>View all products</Button>
+          </div>
+        </>
+      )}
     </HomeWrapper>
   );
 }

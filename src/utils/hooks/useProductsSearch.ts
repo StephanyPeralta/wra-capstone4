@@ -5,31 +5,33 @@ import { useLatestAPI } from './useLatestAPI';
 import { Product, ApiProductsData } from '../types';
 
 interface IProducts {
-  data: Product[];
+  products: Product[];
   isLoading: boolean;
 }
 
-export function useProducts(): IProducts {
+export function useProductsSearch(searchTerm: string): IProducts {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [products, setProducts] = useState<IProducts>(() => ({
-    data: [],
+    products: [],
     isLoading: true,
   }));
 
   useEffect(() => {
     if (!apiRef || isApiMetadataLoading) {
-      return () => {};
+      return;
     }
 
     const controller = new AbortController();
 
     async function getProducts() {
       try {
-        setProducts({ data: [], isLoading: true });
+        setProducts({ products: [], isLoading: true });
 
         const response = await fetch(
           `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
             '[[at(document.type, "product")]]'
+          )}&q=${encodeURIComponent(
+            `[[fulltext(document, "${searchTerm}")]]`
           )}&lang=en-us&pageSize=30`,
           {
             signal: controller.signal,
@@ -52,9 +54,9 @@ export function useProducts(): IProducts {
           };
         });
 
-        setProducts({ data: productsData, isLoading: false });
+        setProducts({ products: productsData, isLoading: false });
       } catch (err) {
-        setProducts({ data: [], isLoading: false });
+        setProducts({ products: [], isLoading: false });
         console.error(err);
       }
     }
@@ -64,7 +66,7 @@ export function useProducts(): IProducts {
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading]);
+  }, [apiRef, isApiMetadataLoading, searchTerm]);
 
   return products;
 }

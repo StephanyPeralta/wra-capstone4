@@ -15,11 +15,14 @@ export interface Product {
   id?: string;
   img: string;
   name: string;
+  description?: string;
   price: number;
   category: string;
+  sku?: string;
 }
 
 export interface ProductsState {
+  searchTerm: string;
   activeCategories: string[];
 }
 

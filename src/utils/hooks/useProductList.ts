@@ -2,65 +2,69 @@ import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
 import { useLatestAPI } from './useLatestAPI';
 
-import { Category, ApiCategoriesData } from '../types';
+import { Product, ApiProductsData } from '../types';
 
-interface ICategories {
-  categories: Category[];
+interface IProducts {
+  products: Product[];
   isLoading: boolean;
 }
 
-export function useCategories(): ICategories {
+export function useProductList(): IProducts {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
-  const [categories, setCategories] = useState<ICategories>(() => ({
-    categories: [],
+  const [products, setProducts] = useState<IProducts>(() => ({
+    products: [],
     isLoading: true,
   }));
 
   useEffect(() => {
     if (!apiRef || isApiMetadataLoading) {
-      return () => {};
+      return;
     }
 
     const controller = new AbortController();
 
-    async function getCategories() {
+    async function getProducts() {
       try {
-        setCategories({ categories: [], isLoading: true });
+        setProducts({ products: [], isLoading: true });
 
         const response = await fetch(
           `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
-            '[[at(document.type, "category")]]'
+            '[[at(document.type, "product")]]'
           )}&lang=en-us&pageSize=30`,
           {
             signal: controller.signal,
           }
         );
-        const data: ApiCategoriesData = await response.json();
+        const data: ApiProductsData = await response.json();
 
-        const categoriesData = data.results.map((item) => {
+        const productsData = data.results.map((item) => {
           const id = item.id;
-          const title = item.data.name;
-          const img = item.data.main_image.url;
+          const name = item.data.name;
+          const price = item.data.price;
+          const img = item.data.mainimage.url;
+          const category = item.data.category.slug;
           return {
             id,
-            title,
             img,
+            name,
+            price,
+            category,
           };
         });
 
-        setCategories({ categories: categoriesData, isLoading: false });
+        setProducts({ products: productsData, isLoading: false });
       } catch (err) {
-        setCategories({ categories: [], isLoading: false });
+        setProducts({ products: [], isLoading: false });
         console.error(err);
       }
     }
 
-    getCategories();
+    getProducts();
 
     return () => {
       controller.abort();
     };
   }, [apiRef, isApiMetadataLoading]);
 
-  return categories;
+  return products;
 }

@@ -1,19 +1,16 @@
 import styled from 'styled-components';
 
-const ProductListWrapper = styled.div`
-  display: flex;
-  .products-container {
-    width: 100%;
-    height: calc(100vh - 80px);
-    overflow-y: scroll;
-    padding: 40px 60px 30px;
-  }
+const SearchWrapper = styled.div`
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+  padding: 90px 60px 30px;
   @media (max-width: 768px) {
-    padding: 40px 40px 30px;
+    padding: 90px 40px 30px;
   }
   @media (max-width: 576px) {
-    flex-direction: column;
-    padding: 40px 20px 30px;
+    padding: 90px 20px 30px;
+    text-align: center;
   }
 `;
 
@@ -32,4 +29,4 @@ const ErrorAlert = styled.div`
   }
 `;
 
-export { ProductListWrapper, ErrorAlert };
+export { SearchWrapper, ErrorAlert };
