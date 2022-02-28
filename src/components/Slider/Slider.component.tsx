@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { Autoplay, Pagination, Navigation, Virtual } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
@@ -6,30 +6,16 @@ import 'swiper/swiper.min.css';
 import 'swiper/modules/pagination/pagination.min.css';
 import 'swiper/modules/navigation/navigation.min.css';
 
-import featuredBanners from '../../mocks/en-us/featured-banners.json';
-import { Banner } from '../../utils/types';
+import { useFeaturedBanners } from '../../utils/hooks/useFeaturedBanners';
+import Loader from '../Loader';
 import { SliderWrapper, SliderTextBox } from './Slider.styled';
 
 function Slider() {
-  const [banners, setBanners] = useState<Banner[]>([]);
+  const { isLoading, data: banners } = useFeaturedBanners();
 
-  useEffect(() => {
-    const data = featuredBanners.results;
-
-    const getBanners = data.map((item) => {
-      const id = item.id;
-      const img = item.data.main_image.url;
-      const title = item.data.title;
-      const description = item.data.description[0].text;
-      return {
-        id,
-        img,
-        title,
-        description,
-      };
-    });
-    setBanners(getBanners);
-  }, []);
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <SliderWrapper>
@@ -48,12 +34,12 @@ function Slider() {
         className="mySwiper"
         virtual
       >
-        {banners.map((item) => (
-          <SwiperSlide key={item.id}>
-            <img src={item.img} alt={item.title} />
+        {banners.map((banner) => (
+          <SwiperSlide key={banner.id}>
+            <img src={banner.img} alt={banner.title} />
             <SliderTextBox>
-              <h1 className="banner-title">{item.title}</h1>
-              <p className="banner-description">{item.description}</p>
+              <h1 className="banner-title">{banner.title}</h1>
+              <p className="banner-description">{banner.description}</p>
             </SliderTextBox>
           </SwiperSlide>
         ))}

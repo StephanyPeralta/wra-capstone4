@@ -2,14 +2,30 @@ import React from 'react';
 
 import { PaginationWrapper } from './Pagination.styled';
 
-function Pagination() {
+interface PaginationProps {
+  productsPerPage: number;
+  totalProducts: number;
+  paginate: any;
+}
+
+function Pagination({ productsPerPage, totalProducts, paginate }: PaginationProps) {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <PaginationWrapper>
-      <div className="page-item">{'<'}</div>
-      <div className="page-item">1</div>
-      <div className="page-item">2</div>
-      <div className="page-item">3</div>
-      <div className="page-item">{'>'}</div>
+      <ul className="pagination">
+        {pageNumbers.map((number) => (
+          <li key={number} className="page-item">
+            <button onClick={() => paginate(number)} className="page-link">
+              {number}
+            </button>
+          </li>
+        ))}
+      </ul>
     </PaginationWrapper>
   );
 }
