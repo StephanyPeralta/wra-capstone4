@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ProductsWrapperH = styled.section`
+const ProductsWrapperH = styled.div`
   background-color: #f6f1ed;
   padding: 90px 60px 30px;
   @media (max-width: 768px) {
@@ -16,12 +16,12 @@ const ProductsWrapperPL = styled(ProductsWrapperH)`
   background-color: transparent;
   overflow-y: scroll;
   width: 100%;
-  padding: 40px 60px 100px;
+  padding: 0;
   @media (max-width: 768px) {
-    padding: 40px 40px 100px;
+    padding: 0;
   }
   @media (max-width: 576px) {
-    padding: 40px 20px 100px;
+    padding: 0;
     text-align: center;
   }
 `;
@@ -36,7 +36,8 @@ const Title = styled.h1`
 `;
 
 const ProductsGrid = styled.div`
-  margin: 0 0 60px;
+  max-width: 1440px;
+  margin: 0 auto 60px;
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

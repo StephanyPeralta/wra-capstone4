@@ -1,1 +1,1 @@
-export { default, useProducts } from './Products.provider';
+export { default, useProductsContext } from './Products.provider';

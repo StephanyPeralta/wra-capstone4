@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ProductCard from '../ProductCard';
-import Pagination from '../../components/Pagination';
 import { Product } from '../../utils/types';
 import {
   ProductsWrapperH,
@@ -27,7 +26,6 @@ function Products({ title, products }: ProductsProps) {
           <ProductCard key={product.id} {...product} />
         ))}
       </ProductsGrid>
-      {title === 'Products' && <Pagination />}
     </ProductsWrapperMain>
   );
 }

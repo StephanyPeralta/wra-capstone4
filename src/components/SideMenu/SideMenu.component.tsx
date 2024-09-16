@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useProducts } from '../../providers/Products';
+import { useProductsContext } from '../../providers/Products';
 import { Category } from '../../utils/types';
 import { MenuWrapper } from './SideMenu.styled';
 
@@ -9,7 +9,7 @@ interface MenuProps {
 }
 
 function SideMenu({ categories }: MenuProps) {
-  const { activeCategories, addCategory, removeCategory } = useProducts();
+  const { activeCategories, addCategory, removeCategory } = useProductsContext();
 
   function handleFilterCategory(categoryTitle: string) {
     if (!activeCategories.includes(categoryTitle.toLowerCase())) {
